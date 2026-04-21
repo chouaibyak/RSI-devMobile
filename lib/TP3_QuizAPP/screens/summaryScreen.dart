@@ -18,12 +18,12 @@ class SummaryScreen extends StatefulWidget {
 class _SummaryScreenState extends State<SummaryScreen> {
 
   Color getColor(int questionIndex, int answerIndex, int correctIndex){
-    if(widget.userAnswers.length <= questionIndex){
+    if(questionIndex >= widget.userAnswers.length){
         return Colors.deepPurple;
     }
 
     int userAnswer = widget.userAnswers[questionIndex];
-
+    
     if(answerIndex == correctIndex){
       return Colors.green;
     }

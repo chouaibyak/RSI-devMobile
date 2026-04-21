@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:learningdart/TP2_QuizAPP/question.dart';
-import 'package:learningdart/TP2_QuizAPP/startScreen.dart';
+import 'package:learningdart/TP3_QuizAPP/screens/startScreen.dart';
+import './screens/questionScreen.dart';
 
 void main() {
-  runApp(Main());
+  runApp(const Main());
 }
 
 class Main extends StatefulWidget {
@@ -15,31 +15,35 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
 
-  int selectedIndex = 0;
+  String activeScreen = "start";
 
-  List<Widget> get pages => [
-    StartScreen(onStart: change),
-    Question(onStart: change)
-  ];
-
-  void change(){
+  void switchScreen() {
     setState(() {
-      if(selectedIndex == 0 ){
-        selectedIndex = 1;
-      }else{
-        selectedIndex = 0;
+      if (activeScreen == "start") {
+        activeScreen = "quiz";
+      } else {
+        activeScreen = "start";
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+
+    Widget screen;
+
+    if (activeScreen == "start") {
+      screen = StartScreen(onStart: switchScreen);
+    } else {
+      screen = Question(onStart: switchScreen);
+    }
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 238, 183, 248),
-        body: pages[selectedIndex]
-      )
+        body: screen,
+      ),
     );
   }
 }

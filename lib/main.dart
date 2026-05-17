@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:learningdart/Compteur_provider/compteur_screen.dart';
+import 'package:learningdart/Compteur/compteur.dart';
+import 'package:learningdart/Compteur/compteur_provider.dart';
 import 'package:learningdart/shop_app/pages/category_page.dart';
+import 'package:provider/provider.dart';
 void main() {
-  runApp(const MyApp());
+  runApp( ChangeNotifierProvider(
+    create: (_) => ProviderCompteur(),
+    child: MyApp()
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: CompteurScreen(),
+      home: CompteurProvider(),
     );
   }
 }

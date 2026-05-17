@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:learningdart/shop_app/screens/category_screen.dart';
-
+import 'package:learningdart/shop_app/pages/category_page.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -12,8 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CategoryScreen(),
+      home: CategoryPage(),
     );
   }
 }

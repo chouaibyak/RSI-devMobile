@@ -1,27 +1,23 @@
+import 'product.dart';
+
 class Category {
   final int id;
   final String name;
-  final String image;
+  final List<Product> products;
 
-  Category({
+  const Category({
     required this.id,
     required this.name,
-    required this.image,
+    required this.products,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) {
     return Category(
-      id: json['id'],
-      name: json['name'],
-      image: json['image'],
+      id: json["id"],
+      name: json["name"],
+      products: (json["products"] as List)
+          .map((e) => Product.fromJson(e))
+          .toList(),
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'image': image,
-    };
   }
 }

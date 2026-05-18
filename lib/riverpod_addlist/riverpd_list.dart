@@ -17,12 +17,15 @@ class RiverpdList extends ConsumerWidget {
     List<String> messages = ref.watch(addMessageProvider);
     return MaterialApp(
         home: Scaffold(
-            body: Column(
-              children: [
-                for(String tmp in messages) Text(tmp),
-                SizedBox(height: 20,),
-                ElevatedButton(onPressed: (){ref.read(addMessageProvider);}, child: Text("add"))
-              ],
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  for(String tmp in messages) Text(tmp),
+                  SizedBox(height: 20,),
+                  ElevatedButton(onPressed: (){ref.read(addMessageProvider.notifier).addmessage();}, child: Text("add"))
+                ],
+              ),
             ),
         ),
     );
